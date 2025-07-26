@@ -1,0 +1,14 @@
+version: 0.2
+phases:
+  install:
+    commands:
+    - curl -s https://releases.hashicorp.com/terraform/1.12.2/terraform_1.12.2_linux_386.zip -o Terraform.zip
+    - unzip Terraform.zip
+  build:
+    commands:
+    - ./terraform init
+    - ./terraform apply --auto-approve
+artifacts:
+  name: TerraformPlan
+  files:
+  - "Terraform.tfstate*"
